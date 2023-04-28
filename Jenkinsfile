@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
     tools {
@@ -68,12 +69,16 @@ pipeline {
         stage('Change Directory') {
             steps {
                 dir('./dev') {
-                    echo 'Welcome to Dev Enviroment'
-                    sh 'ls'
-                    sh 'pwd'
-                    sh 'terraform init'
-                    echo "terraform is performing ==> ${action} action"
-                    sh "terraform ${action} -var-file='terraform.tfvars' -auto-approve"
+                    timeout(time: 10, unit: 'MINUTES') {
+                        echo 'Welcome to Dev Enviroment'
+                        sh 'ls'
+                        sh 'pwd'
+                        sh 'terraform init'
+                        echo "terraform is performing ==> ${action} action"
+                        sh "terraform ${action} -var-file='terraform.tfvars' -auto-approve"
+
+                    }
+                    
                 }
             }
         }
