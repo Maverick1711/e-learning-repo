@@ -57,7 +57,7 @@ pipeline {
         }
         // stage('ACM Directory') {
         //     steps {
-        //         dir('./modules/acm') {
+        //         dir('/modules/acm') {
         //             echo 'Initializing postgres_RDS dir'
         //             sh 'ls'
         //             sh 'pwd'
