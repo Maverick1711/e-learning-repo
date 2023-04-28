@@ -72,7 +72,8 @@ pipeline {
                     sh 'ls'
                     sh 'pwd'
                     sh 'terraform init'
-                    sh "terraform apply -var-file='terraform.tfvars' -auto-approve"
+                    echo 'terraform ${action} Execution in progress'
+                    sh "terraform {action} -var-file='terraform.tfvars' -auto-approve"
                 }
             }
         }
