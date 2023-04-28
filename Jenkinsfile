@@ -72,7 +72,7 @@ pipeline {
                     sh 'ls'
                     sh 'pwd'
                     sh 'terraform init'
-                    sh "terraform apply -var-file='dev.tfvars' -auto-approve"
+                    sh "terraform apply -var-file='terraform.tfvars' -auto-approve"
                 }
             }
         }
