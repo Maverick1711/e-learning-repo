@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'git@github.com:Maverick1711/e-learning-repo.git'
+                git branch: 'main', url: 'https://github.com/Maverick1711/e-learning-repo.git'
             }
         }
         stage('VPC Directory') {
