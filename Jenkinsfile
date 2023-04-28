@@ -67,7 +67,7 @@ pipeline {
         // }
         stage('Change Directory') {
             steps {
-                dir('../../dev') {
+                dir('././dev') {
                     echo 'Welcome to Dev Enviroment'
                     sh 'ls'
                     sh 'pwd'
