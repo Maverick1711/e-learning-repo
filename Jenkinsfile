@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Your-me/TERRA_JENKINS.git'
+                git branch: 'main', url: 'git@github.com:Maverick1711/e-learning-repo.git'
             }
         }
         stage('VPC Directory') {
@@ -55,16 +55,16 @@ pipeline {
                 }
             }
         }
-        stage('ACM Directory') {
-            steps {
-                dir('./acm') {
-                    echo 'Initializing postgres_RDS dir'
-                    sh 'ls'
-                    sh 'pwd'
-                    sh 'terraform init'
-                }
-            }
-        }
+        // stage('ACM Directory') {
+        //     steps {
+        //         dir('./acm') {
+        //             echo 'Initializing postgres_RDS dir'
+        //             sh 'ls'
+        //             sh 'pwd'
+        //             sh 'terraform init'
+        //         }
+        //     }
+        // }
         stage('Change Directory') {
             steps {
                 dir('../../dev') {
