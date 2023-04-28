@@ -17,7 +17,7 @@ pipeline {
         }
         stage('VPC Directory') {
             steps {
-                dir('vpc') {
+                dir('modules/vpc') {
                     echo 'Initializing vpc dir'
                     sh 'ls'
                     sh 'pwd'
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('ECS Directory') {
             steps {
-                dir('./ecs') {
+                dir('modules/ecs') {
                     echo 'Initializing ecs dir'
                     sh 'ls'
                     sh 'pwd'
@@ -37,7 +37,7 @@ pipeline {
         }
         stage('ROUTE 53 Directory') {
             steps {
-                dir('./route 53') {
+                dir('modules/route 53') {
                     echo 'Initializing route-53 dir'
                     sh 'ls'
                     sh 'pwd'
@@ -47,7 +47,7 @@ pipeline {
         }
         stage('POSTGRES_RDS Directory') {
             steps {
-                dir('./postgres_RDS') {
+                dir('modules/postgres_RDS') {
                     echo 'Initializing postgres_RDS dir'
                     sh 'ls'
                     sh 'pwd'
@@ -57,7 +57,7 @@ pipeline {
         }
         // stage('ACM Directory') {
         //     steps {
-        //         dir('./acm') {
+        //         dir('/modules/acm') {
         //             echo 'Initializing postgres_RDS dir'
         //             sh 'ls'
         //             sh 'pwd'
@@ -67,7 +67,7 @@ pipeline {
         // }
         stage('Change Directory') {
             steps {
-                dir('../../dev') {
+                dir('./dev') {
                     echo 'Welcome to Dev Enviroment'
                     sh 'ls'
                     sh 'pwd'
