@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'git@github.com:Maverick1711/e-learning-repo.git'
+                git branch: 'main', url: 'https://github.com/Maverick1711/e-learning-repo.git'
             }
         }
         stage('VPC Directory') {
@@ -72,7 +72,7 @@ pipeline {
                     sh 'ls'
                     sh 'pwd'
                     sh 'terraform init'
-                    sh "terraform apply -var-file='dev.tfvars' -auto-approve"
+                    sh "terraform apply -var-file='terraform.tfvars' -auto-approve"
                 }
             }
         }
