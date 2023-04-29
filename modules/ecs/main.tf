@@ -99,7 +99,7 @@ resource "aws_alb_listener" "e-learning-https" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = var.certificate_arn
+  certificate_arn   = var.elearning_certificate_arn
  
   default_action {
     target_group_arn = aws_alb_target_group.e-learning-ntg.arn
