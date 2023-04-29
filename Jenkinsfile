@@ -58,7 +58,7 @@ pipeline {
         }
         stage('ACM Directory') {
             steps {
-                dir('/modules/acm') {
+                dir('modules/acm') {
                     echo 'Initializing ACM dir'
                     sh 'ls'
                     sh 'pwd'
