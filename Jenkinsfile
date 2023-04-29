@@ -4,6 +4,9 @@ pipeline {
     tools {
         terraform 'terraform-10'
     }
+    options {
+                timeout(time: 2, unit: 'HOURS')
+            } 
     
     stages {
         stage('Hello') {
@@ -67,18 +70,17 @@ pipeline {
             }
         }
         stage('Change Directory') {
+            options {
+                timeout(time: 55, unit: 'MINUTES')
+            } 
             steps {
                 dir("./${environment}") {
-                    timeout(time: 10, unit: 'MINUTES') {
-                        echo "Welcome to ${environment} Enviroment"
-                        sh 'ls'
-                        sh 'pwd'
-                        sh 'terraform init'
-                        echo "terraform is performing ==> ${action} action"
-                        sh "terraform ${action} -var-file='terraform.tfvars' -auto-approve"
-
-                    }
-                    
+                    echo "Welcome to ${environment} Enviroment"
+                    sh 'ls'
+                    sh 'pwd'
+                    sh 'terraform init'
+                    echo "terraform is performing ==> ${action} action"
+                    sh "terraform ${action} -var-file='terraform.tfvars' -auto-approve"
                 }
             }
         }
