@@ -108,38 +108,38 @@ resource "aws_alb_listener" "e-learning-http" {
 #   }
 # }
 
-#Create ECR
-resource "aws_ecr_repository" "e-learning-repo" {
-  name                 = "elearning-repo"
-  image_tag_mutability = "IMMUTABLE"
-}
+# #Create ECR
+# resource "aws_ecr_repository" "e-learning-repo" {
+#   name                 = "elearning-repo"
+#   image_tag_mutability = "IMMUTABLE"
+# }
 
 
-resource "aws_ecr_repository_policy" "demo-repo-policy" {
-  repository = aws_ecr_repository.e-learning-repo.name
-  policy     = <<EOF
-  {
-    "Version": "2008-10-17",
-    "Statement": [
-      {
-        "Sid": "adds full ecr access to the e-learning repository",
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": [
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:BatchGetImage",
-          "ecr:CompleteLayerUpload",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:GetLifecyclePolicy",
-          "ecr:InitiateLayerUpload",
-          "ecr:PutImage",
-          "ecr:UploadLayerPart"
-        ]
-      }
-    ]
-  }
-  EOF
-}
+# resource "aws_ecr_repository_policy" "demo-repo-policy" {
+#   repository = aws_ecr_repository.e-learning-repo.name
+#   policy     = <<EOF
+#   {
+#     "Version": "2008-10-17",
+#     "Statement": [
+#       {
+#         "Sid": "adds full ecr access to the e-learning repository",
+#         "Effect": "Allow",
+#         "Principal": "*",
+#         "Action": [
+#           "ecr:BatchCheckLayerAvailability",
+#           "ecr:BatchGetImage",
+#           "ecr:CompleteLayerUpload",
+#           "ecr:GetDownloadUrlForLayer",
+#           "ecr:GetLifecyclePolicy",
+#           "ecr:InitiateLayerUpload",
+#           "ecr:PutImage",
+#           "ecr:UploadLayerPart"
+#         ]
+#       }
+#     ]
+#   }
+#   EOF
+# }
 
 # Traffic to the ECS cluster should only come from the ALB
 resource "aws_security_group" "e-learning-ecs-tasks" {
