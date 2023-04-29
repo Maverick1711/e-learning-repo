@@ -12,6 +12,7 @@ module "vpc" {
   pub-sub-2-cidr-block  = var.pub-sub-2-cidr-block
   priv-sub-1-cidr-block = var.priv-sub-1-cidr-block
   priv-sub-2-cidr-block = var.priv-sub-2-cidr-block
+  region = var.region
 
 }
 
