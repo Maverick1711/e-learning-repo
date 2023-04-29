@@ -99,7 +99,6 @@ resource "aws_alb_listener" "e-learning-https" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  alpn_policy       = "HTTP2Preferred"
   certificate_arn   = var.certificate_arn
  
   default_action {
