@@ -28,10 +28,6 @@ resource "aws_route53_record" "elearning_cert_dns" {
   zone_id         = var.aws_route53_zone_id
 }
 
-resource "aws_acm_certificate_validation" "elearning_cert_validate" {
-  certificate_arn = aws_acm_certificate.elearning_acm_cert.arn
-  validation_record_fqdns = [aws_route53_record.elearning_cert_dns.fqdn]
-}
 
 resource "aws_acm_certificate_validation" "acm_certificate_validation" {
   certificate_arn         = aws_acm_certificate.elearning_acm_cert.arn
