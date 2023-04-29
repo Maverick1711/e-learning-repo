@@ -1,3 +1,19 @@
+# Create ALB
+resource "aws_lb" "e-learning-alb" {
+  name               = "e-learning-lb-tf"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.e-learning-sg.id]
+  subnets            = [var.pub-sub-1-id,var.pub-sub-2-id]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Name = "e-learning-alb"
+  }
+}
+
+# Create security group to allow 80 and 443
 resource "aws_security_group" "e-learning-sg" {
   name        = "e-learningsg"
   description = "Allow 80 and 443 inbound traffic"
@@ -11,7 +27,7 @@ resource "aws_security_group" "e-learning-sg" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
-  ingress {
+ingress {
     description      = "TLS from VPC"
     from_port        = 80
     to_port          = 80
@@ -72,14 +88,11 @@ resource "aws_alb_listener" "e-learning-http" {
       port        = 443
       protocol    = "HTTPS"
       status_code = "HTTP_301"
-    }
+   }
   }
 
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 5a6181af27385bc710a9e31b549be6ed827dedd0
 
 resource "aws_alb_listener" "e-learning-https" {
   load_balancer_arn = aws_lb.e-learning-alb.id
