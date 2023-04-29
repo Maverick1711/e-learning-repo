@@ -27,7 +27,7 @@ resource "aws_security_group" "e-learning-sg" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
-ingress {
+  ingress {
     description      = "TLS from VPC"
     from_port        = 80
     to_port          = 80
@@ -74,24 +74,24 @@ resource "aws_alb_listener" "e-learning-http" {
   protocol          = "HTTP"
 
 
-# Application load balancer forwarding traffic to unsecued port 80
-  default_action {
-    target_group_arn = aws_alb_target_group.e-learning-ntg.id
-    type             = "forward"
-  }
-
-# # Application load balancer redirecting traffic to secured port 443
+# # Application load balancer forwarding traffic to unsecued port 80
 #   default_action {
-#    type = "redirect"
- 
-#    redirect {
-#      port        = 443
-#      protocol    = "HTTPS"
-#      status_code = "HTTP_301"
-#    }
+#     target_group_arn = aws_alb_target_group.e-learning-ntg.id
+#     type             = "forward"
 #   }
 
+# Application load balancer redirecting traffic to secured port 443
+  default_action {
+    type = "redirect"
+ 
+    redirect {
+      port        = 443
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
   }
+
+}
 
 
 resource "aws_alb_listener" "e-learning-https" {

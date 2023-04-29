@@ -10,3 +10,4 @@ fargate_memory          = 1024
 domain_name             = "maverick17.click"
 db_user                 = "test_user"  #store as an environmental variable. Do not expose
 db_password             = "admin1234"  #store as an environmental variable. Do not expose
+certificate_arn          = "arn:aws:acm:eu-west-2:521725812311:certificate/2267a4c8-3de7-400a-b3bb-a88fb4cf4570"
