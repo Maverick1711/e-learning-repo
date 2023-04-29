@@ -11,7 +11,7 @@ resource "aws_acm_certificate" "elearning_acm_cert" {
 
 
 # create a record set in route 53 for domain validatation
-resource "aws_route53_record" "route_53_record" {
+resource "aws_route53_record" "elearning_cert_dns" {
   for_each = {
     for dvo in aws_acm_certificate.elearning_acm_cert.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
@@ -31,4 +31,9 @@ resource "aws_route53_record" "route_53_record" {
 resource "aws_acm_certificate_validation" "elearning_cert_validate" {
   certificate_arn = aws_acm_certificate.elearning_acm_cert.arn
   validation_record_fqdns = [aws_route53_record.elearning_cert_dns.fqdn]
+}
+
+resource "aws_acm_certificate_validation" "acm_certificate_validation" {
+  certificate_arn         = aws_acm_certificate.elearning_acm_cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.elearning_cert_dns : record.fqdn]
 }
