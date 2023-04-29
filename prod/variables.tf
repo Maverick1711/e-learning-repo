@@ -10,4 +10,4 @@ variable "app_count" {}
 variable "domain_name" {}
 variable "db_user" {}
 variable "db_password" {}
-#variable "certificate_arn" {}
+variable "certificate_arn" {}
