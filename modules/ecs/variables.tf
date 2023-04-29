@@ -8,4 +8,4 @@ variable "az1" {}
 variable "az2" {}
 variable "pub-sub-1-id" {}
 variable "pub-sub-2-id" {}
-#variable "certificate_arn" {}
+variable "certificate_arn" {}

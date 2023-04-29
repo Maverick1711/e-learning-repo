@@ -29,7 +29,7 @@ module "ecs" {
   az2             = module.vpc.az2
   pub-sub-1-id    = module.vpc.pub-sub-1-id
   pub-sub-2-id    = module.vpc.pub-sub-2-id
- certificate_arn = module.acm.elearning_cert_arn
+ certificate_arn  = module.acm.elearning_cert_arn
 }
 
 
