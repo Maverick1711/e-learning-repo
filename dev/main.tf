@@ -29,7 +29,7 @@ module "ecs" {
   az2             = module.vpc.az2
   pub-sub-1-id    = module.vpc.pub-sub-1-id
   pub-sub-2-id    = module.vpc.pub-sub-2-id
-#  certificate_arn = module.acm.elearning_cert_arn
+ certificate_arn = module.acm.elearning_cert_arn
 }
 
 
@@ -41,12 +41,12 @@ module "route_53" {
   alb-zone_id  = module.ecs.alb-zone_id
 }
 
-# module "acm" {
-#   source      = "../modules/acm"
-#   domain_name = var.domain_name
-#   aws_route53_zone_id = module.route_53.aws_route53_zone_id
+module "acm" {
+  source      = "../modules/acm"
+  domain_name = var.domain_name
+  aws_route53_zone_id = module.route_53.aws_route53_zone_id
 
-# }
+}
 
 module "postgre_rds" {
   source = "../modules/postgre_RDS"
