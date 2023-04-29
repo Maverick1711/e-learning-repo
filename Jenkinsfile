@@ -46,10 +46,10 @@ pipeline {
                 }
             }
         }
-        stage('POSTGRES_RDS Directory') {
+        stage('POSTGRE_RDS Directory') {
             steps {
-                dir('modules/postgres_RDS') {
-                    echo 'Initializing postgres_RDS dir'
+                dir('modules/postgre_RDS') {
+                    echo 'Initializing postgre_RDS dir'
                     sh 'ls'
                     sh 'pwd'
                     sh 'terraform init'
@@ -59,7 +59,7 @@ pipeline {
         stage('ACM Directory') {
             steps {
                 dir('/modules/acm') {
-                    echo 'Initializing postgres_RDS dir'
+                    echo 'Initializing ACM dir'
                     sh 'ls'
                     sh 'pwd'
                     sh 'terraform init'
