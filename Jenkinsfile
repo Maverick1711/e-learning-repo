@@ -56,21 +56,21 @@ pipeline {
                 }
             }
         }
-        // stage('ACM Directory') {
-        //     steps {
-        //         dir('/modules/acm') {
-        //             echo 'Initializing postgres_RDS dir'
-        //             sh 'ls'
-        //             sh 'pwd'
-        //             sh 'terraform init'
-        //         }
-        //     }
-        // }
+        stage('ACM Directory') {
+            steps {
+                dir('/modules/acm') {
+                    echo 'Initializing postgres_RDS dir'
+                    sh 'ls'
+                    sh 'pwd'
+                    sh 'terraform init'
+                }
+            }
+        }
         stage('Change Directory') {
             steps {
-                dir('./dev') {
+                dir("./${environment}") {
                     timeout(time: 10, unit: 'MINUTES') {
-                        echo 'Welcome to Dev Enviroment'
+                        echo "Welcome to ${environment} Enviroment"
                         sh 'ls'
                         sh 'pwd'
                         sh 'terraform init'

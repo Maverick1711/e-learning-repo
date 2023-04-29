@@ -1,0 +1,12 @@
+region                  = "eu-west-2"
+vpc-cidr-block          = "10.0.0.0/16"
+pub-sub-1-cidr-block    = "10.0.7.0/24"
+pub-sub-2-cidr-block    = "10.0.8.0/24"
+priv-sub-1-cidr-block   = "10.0.9.0/24"
+priv-sub-2-cidr-block   = "10.0.10.0/24"
+app_count               = 3
+fargate_cpu             = 512
+fargate_memory          = 1024
+domain_name             = "maverick17.click"
+db_user                 = "test_user"  #store as an environmental variable. Do not expose
+db_password             = "staging1234"  #store as an environmental variable. Do not expose
