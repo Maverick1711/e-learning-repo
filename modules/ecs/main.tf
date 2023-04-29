@@ -91,21 +91,21 @@ resource "aws_alb_listener" "e-learning-http" {
 #    }
 #   }
 
-}
+ }
 
 
-resource "aws_alb_listener" "e-learning-https" {
-  load_balancer_arn = aws_lb.e-learning-alb.arn
-  port              = 443
-  protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = var.certificate_arn
+# resource "aws_alb_listener" "e-learning-https" {
+#   load_balancer_arn = aws_lb.e-learning-alb.arn
+#   port              = 443
+#   protocol          = "HTTPS"
+#   ssl_policy        = "ELBSecurityPolicy-2016-08"
+#   certificate_arn   = var.certificate_arn
  
-  default_action {
-    target_group_arn = aws_alb_target_group.e-learning-ntg.arn
-    type             = "forward"
-  }
-}
+#   default_action {
+#     target_group_arn = aws_alb_target_group.e-learning-ntg.arn
+#     type             = "forward"
+#   }
+# }
 
 # #Create ECR
 # resource "aws_ecr_repository" "e-learning-repo" {
@@ -161,8 +161,6 @@ resource "aws_security_group" "e-learning-ecs-tasks" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-
 
 # Create ECS cluster with all its dependencies
 resource "aws_ecs_cluster" "e-learning-cluster" {
@@ -293,8 +291,8 @@ resource "aws_appautoscaling_policy" "ecs_policy_memory" {
   service_namespace  = aws_appautoscaling_target.e-learning-asg.service_namespace
  
   target_tracking_scaling_policy_configuration {
-   predefined_metric_specification {
-     predefined_metric_type = "ECSServiceAverageMemoryUtilization"
+    predefined_metric_specification {
+      predefined_metric_type = "ECSServiceAverageMemoryUtilization"
    }
  
    target_value       = 80
@@ -309,8 +307,8 @@ resource "aws_appautoscaling_policy" "ecs_policy_cpu" {
   service_namespace  = aws_appautoscaling_target.e-learning-asg.service_namespace
  
   target_tracking_scaling_policy_configuration {
-   predefined_metric_specification {
-     predefined_metric_type = "ECSServiceAverageCPUUtilization"
+    predefined_metric_specification {
+      predefined_metric_type = "ECSServiceAverageCPUUtilization"
    }
  
    target_value       = 60
