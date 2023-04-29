@@ -69,7 +69,7 @@ resource "aws_alb_target_group" "e-learning-ntg" {
 
 # Redirect all traffic from the ALB to the target group
 resource "aws_alb_listener" "e-learning-http" {
-  load_balancer_arn = aws_lb.e-learning-alb.id
+  load_balancer_arn = aws_lb.e-learning-alb.arn
   port              = 80
   protocol          = "HTTP"
 
@@ -95,7 +95,7 @@ resource "aws_alb_listener" "e-learning-http" {
 
 
 resource "aws_alb_listener" "e-learning-https" {
-  load_balancer_arn = aws_lb.e-learning-alb.id
+  load_balancer_arn = aws_lb.e-learning-alb.arn
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
