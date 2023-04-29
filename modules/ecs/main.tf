@@ -80,24 +80,24 @@ resource "aws_alb_listener" "e-learning-http" {
     type             = "forward"
   }
 
-# # Application load balancer redirecting traffic to secured port 443
-#   default_action {
-#    type = "redirect"
+# Application load balancer redirecting traffic to secured port 443
+   default_action {
+    type = "redirect"
  
-#    redirect {
-#      port        = 443
-#      protocol    = "HTTPS"
-#      status_code = "HTTP_301"
-#    }
-#   }
+    redirect {
+      port        = 443
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+   }
 
   }
 
 
 resource "aws_alb_listener" "e-learning-https" {
-  load_balancer_arn = aws_lb.e-learning-alb.id
-  port              = 443
-  protocol          = "HTTPS"
+    load_balancer_arn = aws_lb.e-learning-alb.id
+    port              = 443
+    protocol          = "HTTPS"
  
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn   = var.certificate_arn
