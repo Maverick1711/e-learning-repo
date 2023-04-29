@@ -41,12 +41,12 @@ module "route_53" {
   alb-zone_id  = module.ecs.alb-zone_id
 }
 
-# module "acm" {
-#   source      = "../modules/acm"
-#   domain_name = var.domain_name
-#   aws_route53_zone_id = module.route_53.aws_route53_zone_id
+module "acm" {
+  source      = "../modules/acm"
+  domain_name = var.domain_name
+  aws_route53_zone_id = module.route_53.aws_route53_zone_id
 
-# }
+}
 
 module "postgre_rds" {
   source           = "../modules/postgre_RDS"
