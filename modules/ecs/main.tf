@@ -74,22 +74,22 @@ resource "aws_alb_listener" "e-learning-http" {
   protocol          = "HTTP"
 
 
-# # Application load balancer forwarding traffic to unsecued port 80
-#   default_action {
-#     target_group_arn = aws_alb_target_group.e-learning-ntg.id
-#     type             = "forward"
-#   }
-
-# Application load balancer redirecting traffic to secured port 443
+# Application load balancer forwarding traffic to unsecued port 80
   default_action {
-    type = "redirect"
- 
-    redirect {
-      port        = 443
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-   }
+    target_group_arn = aws_alb_target_group.e-learning-ntg.arn
+    type             = "forward"
   }
+
+# # Application load balancer redirecting traffic to secured port 443
+#   default_action {
+#     type = "redirect"
+ 
+#     redirect {
+#       port        = 443
+#       protocol    = "HTTPS"
+#       status_code = "HTTP_301"
+#    }
+#   }
 
 }
 
@@ -98,12 +98,12 @@ resource "aws_alb_listener" "e-learning-https" {
   load_balancer_arn = aws_lb.e-learning-alb.id
   port              = 443
   protocol          = "HTTPS"
- 
   ssl_policy        = "ELBSecurityPolicy-2016-08"
+  alpn_policy       = "HTTP2Preferred"
   certificate_arn   = var.certificate_arn
  
   default_action {
-    target_group_arn = aws_alb_target_group.e-learning-ntg.id
+    target_group_arn = aws_alb_target_group.e-learning-ntg.arn
     type             = "forward"
   }
 }
