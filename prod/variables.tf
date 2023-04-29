@@ -10,4 +10,3 @@ variable "app_count" {}
 variable "domain_name" {}
 variable "db_user" {}
 variable "db_password" {}
-variable "elearning_certificate_arn" {}
