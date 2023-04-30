@@ -16,7 +16,7 @@ module "vpc" {
 
 }
 
-# Create ECS
+# Create EC      
 module "ecs" {
   source          = "../modules/ecs"
   vpc_id          = module.vpc.vpc_id
