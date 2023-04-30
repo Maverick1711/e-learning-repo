@@ -3,6 +3,6 @@ terraform {
     bucket = "elearning-backend"
     key    = "terraform.tfstate"
     region = "eu-west-2"
-    dynamodb_table = "elearningdynamo"
+    dynamodb_table = "terraform-state-lock-dynamo"
   }
 }
