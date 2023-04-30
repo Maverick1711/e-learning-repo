@@ -78,7 +78,7 @@ pipeline {
                     echo "Welcome to ${environment} Enviroment"
                     sh 'ls'
                     sh 'pwd'
-                    sh 'terraform init'
+                    sh 'terraform init -migrate-state'
                     echo "terraform is performing ==> ${action} action"
                     sh "terraform ${action} -var-file='terraform.tfvars' -auto-approve"
                 }
