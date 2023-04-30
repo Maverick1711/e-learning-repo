@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "elearning-backend"
     key    = "terraform.tfstate"
-    region = var.region
+    region = "eu-west-2"
     dynamodb_table = "elearningdynamo"
   }
 }
