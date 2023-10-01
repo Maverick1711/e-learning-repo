@@ -82,7 +82,7 @@ resource "aws_internet_gateway" "e-learning-igw" {
 
 # Create Elastic IP
 resource "aws_eip" "e-learning-eip" {
-  vpc      = true
+  domain = "vpc"
 
   tags = {
     Name = "e-learning-eip"
