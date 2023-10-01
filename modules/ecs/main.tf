@@ -108,7 +108,7 @@ resource "aws_alb_listener" "e-learning-https" {
 }
 
 #Create ECR
-resource "aws_ecr_repository" "e-learning-repo" {
+/* resource "aws_ecr_repository" "e-learning-repo" {
   name                 = "elearning-repo"
   image_tag_mutability = "IMMUTABLE"
 }
@@ -130,7 +130,7 @@ resource "aws_ecr_lifecycle_policy" "e-learning" {
      }
    }]
   })
-}
+} */
 
 
 # Traffic to the ECS cluster should only come from the ALB
